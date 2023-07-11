@@ -23,18 +23,13 @@ app = FastAPI()
 
 @app.get("/")
 def hello():
-  return "hello fast api world"   #http://127.0.0.1:8000
+  return "hello fast api world"   
 
-@app.get("/{specialKey}")#http://127.0.0.1:8000/hello
+@app.get("/{specialKey}")
 async def new(specialKey:str):
   url = url_obj.fetch_url(specialKey)
   return RedirectResponse(url,status_code=302)
   
-    
-
-# http://127.0.0.1:8000/speacial_key
-
-
 @app.post("/addURL")
 async def addurl(json:addURL):
   insert = url_obj.insert_url(json.special_key,json.url)
